@@ -4,6 +4,32 @@ import { CreateTaskUseCase } from './create-task.use-case'
 export class CreateTaskController {
     constructor (private readonly createTaskUseCase: CreateTaskUseCase) { }
 
+            /**
+             * @swagger
+             * /tasks:
+             *   post:
+             *     summary: Create a new task
+             *     tags:
+             *       - Tasks
+             *     requestBody:
+             *       required: true
+             *       content:
+             *         application/json:
+             *           schema:
+             *             type: object
+             *             properties:
+             *               title:
+             *                 type: string
+             *               description:
+             *                 type: string
+             *     responses:
+             *       201:
+             *         description: Task created successfully
+             *       400:
+             *         description: Missing required data
+             *       500:
+             *         description: Internal server error
+             */
     async execute (request: Request, response: Response): Promise<Response> {
         try {
             console.log('Received request to create task:', request.body)
