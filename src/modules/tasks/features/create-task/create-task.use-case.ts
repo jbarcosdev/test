@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from 'uuid'
 import { Task } from '../../entities'
 import { InMemoryTaskRepository } from '../../repositories'
 
@@ -12,7 +13,7 @@ export class CreateTaskUseCase {
 
         // 1. create task entity
         const task = new Task({
-            id: crypto.randomUUID(), // use uuid v4
+            id: uuidv4(),
             ownerId: currentUser.id,
             title: payload.title,
             description: payload.description,
