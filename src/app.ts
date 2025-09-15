@@ -19,6 +19,9 @@ class App {
 
     private middlewares(): void {
         this.app.use(express.json())
+        // Swagger
+        const { swaggerUi, swaggerSpec } = require('./common/swagger')
+        this.app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
     }
 
     private routes(): void {
