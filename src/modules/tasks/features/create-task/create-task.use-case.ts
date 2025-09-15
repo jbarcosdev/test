@@ -3,7 +3,7 @@ import { InMemoryTaskRepository } from '../../repositories'
 
 export class CreateTaskUseCase {
 
-    constructor (private taskRepository: InMemoryTaskRepository = new InMemoryTaskRepository()) {
+    constructor (private taskRepository: InMemoryTaskRepository) {
         // TODO: add dependency injection package instead of instancing here
     }
 

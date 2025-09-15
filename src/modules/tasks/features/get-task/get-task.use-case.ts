@@ -3,7 +3,7 @@ import { InMemoryTaskRepository } from '../../repositories'
 
 export class GetTaskUseCase {
 
-    constructor (private taskRepository: InMemoryTaskRepository = new InMemoryTaskRepository()) { }
+    constructor (private taskRepository: InMemoryTaskRepository) { }
 
     execute (params: GetTaskParams): Task {
         const { taskId, currentUser } = params

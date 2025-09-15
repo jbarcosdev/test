@@ -2,9 +2,9 @@ import { InMemoryTaskRepository } from '../../repositories'
 
 export class DeleteTaskUseCase {
 
-    constructor (private taskRepository: InMemoryTaskRepository = new InMemoryTaskRepository()) { }
+    constructor (private taskRepository: InMemoryTaskRepository) { }
 
-    excute (params: DeleteTaskParams): void {
+    execute (params: DeleteTaskParams): void {
         const { taskId, currentUser } = params
         
         // 1. find task by id
@@ -22,7 +22,6 @@ export class DeleteTaskUseCase {
         return
     }
 }
-
 
 interface DeleteTaskParams {
     taskId: string

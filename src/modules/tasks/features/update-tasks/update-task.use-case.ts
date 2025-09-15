@@ -3,7 +3,7 @@ import { InMemoryTaskRepository } from '../../repositories'
 
 export class UpdateTasksUseCase {
 
-    constructor (private taskRepository: InMemoryTaskRepository = new InMemoryTaskRepository()) { }
+    constructor (private taskRepository: InMemoryTaskRepository) { }
 
     execute (params: UpdateTasksParams): Task {
         const { payload, currentUser } = params
