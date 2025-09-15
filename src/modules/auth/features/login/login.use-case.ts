@@ -24,23 +24,21 @@ const MOCKED_USERS: User[] = [
 export class LoginUseCase {
     async execute(params: LoginParams): Promise<User | null> {
         const { email, password } = params
-        console.log(email, password)
 
         const user = MOCKED_USERS.find(u => u.email === email)
-        console.log(user)
 
         if (!user) {
             return null
         }
 
         const passwordMatch = await bcrypt.compare(password, user.passwordHash)
-        console.log(passwordMatch)
 
         if (!passwordMatch) {
             return null
         }
 
-        return user
+        const { passwordHash, ...userWithoutPassword } = user
+        return userWithoutPassword as User
     }
 }
 

@@ -46,4 +46,4 @@ export interface CurrentUserProps {
     role: UserRole
 }
 
-type UserRole = 'admin' | 'user' | 'guest'
+export type UserRole = 'admin' | 'user' | 'guest'
