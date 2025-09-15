@@ -1,5 +1,6 @@
 import express, { Express } from 'express'
 import { InMemoryTaskRepository } from './modules/tasks/repositories'
+import { AuthController, LoginUseCase } from './modules/auth/features/login'
 import { CreateTaskController, CreateTaskUseCase } from './modules/tasks/features/create-task'
 import { ListTasksController, ListTasksUseCase } from './modules/tasks/features/list-tasks'
 import { UpdateTasksController, UpdateTasksUseCase } from './modules/tasks/features/update-tasks'
@@ -21,6 +22,10 @@ class App {
 
     private routes(): void {
         const taskRepository = new InMemoryTaskRepository()
+
+        const loginUseCase = new LoginUseCase()
+        const authController = new AuthController(loginUseCase)
+        this.app.post('/login', (req, res) => authController.login(req, res))
 
         const createTaskUseCase = new CreateTaskUseCase(taskRepository)
         const createTaskController = new CreateTaskController(createTaskUseCase)
